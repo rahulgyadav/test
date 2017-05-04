@@ -1,0 +1,37 @@
+<html>
+<head>    
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    <script language="javascript" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+</head>
+<body style="Padding:20px;">
+    <form>
+    
+    <div ng-app="myApp" ng-controller="myCntrl">
+    Date: 
+        <input type="text" uib-datepicker-popup="{{dateformat}}" ng-model="dt" is-open="showdp" max-date="dtmax" />
+        <span>
+            <button type="button" class="btn btn-default" ng-click="showcalendar($event)">
+                <i class="glyphicon glyphicon-calendar"></i>
+            </button>
+        </span>
+    </div>
+    <script language="javascript">
+        angular.module('myApp', ['ngAnimate', 'ui.bootstrap']);
+        angular.module('myApp').controller('myCntrl', function ($scope) {
+            $scope.today = function () {
+                $scope.dt = new Date();
+            };
+            $scope.dateformat="MM/dd/yyyy";
+            $scope.today();
+            $scope.showcalendar = function ($event) {
+                $scope.showdp = true;
+            };
+            $scope.showdp = false;        
+            $scope.dtmax = new Date();
+        });
+    </script>
+    </form>
+</body>
+</html>
